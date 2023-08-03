@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 <!---->>
-{% block title %} หน้าแรกเกี่ยวกับเฮา {% endblock title %}
+{% block title %} หน้าแรกเกี่ยวกับเรา {% endblock title %}
 <!---->>
 {% block content %} 
 
@@ -14,6 +14,7 @@
         <th scope="col">Lastname</th>
         <th scope="col">Phone</th>
         <th scope="col">Address</th>
+        <th scope="col">Major</th>
       </tr>
     </thead>
     <tbody>
@@ -21,11 +22,12 @@
       <tr>
         <th scope="row">1</th>
         <td><a href="{% url 'details' student.id %}">{{ student.std_id }}</a></td>
-        <td>{{ student.prefix }}</td>
+        <td>{{ student.prefix_str }}</td>
         <td>{{ student.name }}</td>
         <td>{{ student.lastname }}</td>
         <td>{{ student.phone }}</td>
-        <td>{{ student.address }}</td>      
+        <td>{{ student.address }}</td> 
+        <td>{{ student.major }}</td>      
       </tr>
       {% endfor %}
     </tbody>

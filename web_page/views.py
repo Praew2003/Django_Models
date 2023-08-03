@@ -1,12 +1,19 @@
 from django.shortcuts import render , HttpResponse
 from . import models
+
 # Create your views here.
+
+
 def home(request):
     context = {}
    
        
-    students = models.Student.objects.all().order_by("id")
-   
+    students = models.Student.objects.all().order_by("std_id")
+    
+    for student in students:
+        student.prefix_str = getModelChoice(
+            student.prefix, models.prefix_choices)
+        
     context ['students'] = students
  
    
@@ -21,6 +28,17 @@ def contact(request):
 
 def studentDetails(request, id) :
     context = {}
-    student = models.Student.objects.get(id=id)
-    context['student'] = student
-    return render(request,"details.html")
+    students = models.Student.objects.filter(id=id)
+    for student in students:
+        student.prefix_str = getModelChoice(
+            student.prefix, models.prefix_choices)
+        
+        context['student'] = student
+        
+    return render(request,"details.html",context)
+
+def getModelChoice(num, choices) :
+    for choice in choices:
+            if choice[0] == num:
+                return choice[1]
+            
