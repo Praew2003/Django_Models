@@ -46,8 +46,12 @@
         
 ```
 การสร้างและเพิ่มขเ้อมูลรายละเอียดใน details.html
+<<<<<<< HEAD
 ```shell      
 > {% for student in students  %}
+=======
+ {% for student in students  %}
+>>>>>>> b0f636cbba6f14d62283ec809b0bda1090efb664
       <tr>
         <th scope="row">1</th>
         <td>{{ student.std_id }}</td>
@@ -59,11 +63,16 @@
         <td>{{ student.major }}</td>       
       </tr>
       {% endfor %}
+<<<<<<< HEAD
 ```
       
 การเพิ่ม class Major(models.Model) ใน models.py
 ```shell 
 > class Major(models.Model):
+=======
+การเพิ่ม class Major(models.Model) models.py
+class Major(models.Model):
+>>>>>>> b0f636cbba6f14d62283ec809b0bda1090efb664
 
     name = models.CharField(max_length=255)
 
@@ -73,10 +82,15 @@
 
     def __str__(self):
         return self.name
+<<<<<<< HEAD
 ```
 การเพิ่ม  studentDetails ใน views.py
 ```shell 
 > def studentDetails(request, id) :
+=======
+การเพิ่ม  studentDetails ใน views.py
+def studentDetails(request, id) :
+>>>>>>> b0f636cbba6f14d62283ec809b0bda1090efb664
     context = {}
     students = models.Student.objects.filter(id=id)
     for student in students:
@@ -91,10 +105,15 @@ def getModelChoice(num, choices) :
     for choice in choices:
             if choice[0] == num:
                 return choice[1]
+<<<<<<< HEAD
 ```            
 การเพิ่มรายการใน admin.py
 ```shell 
 > from django.contrib import admin
+=======
+การเพิ่มรายการใน admin.py
+from django.contrib import admin
+>>>>>>> b0f636cbba6f14d62283ec809b0bda1090efb664
 
 # Register your models here.
 
@@ -108,4 +127,7 @@ class Admin(admin.ModelAdmin):
 @admin.register(Major)
 class MajorAdmin(admin.ModelAdmin):
     list_display = ('name', )
+<<<<<<< HEAD
 ```
+=======
+>>>>>>> b0f636cbba6f14d62283ec809b0bda1090efb664
